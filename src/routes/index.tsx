@@ -214,28 +214,49 @@ function HeroSlider() {
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
-      {/* Slides */}
-      {heroSlides.map((slide, i) => (
-        <div
-          key={i}
-          className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
-          aria-hidden={i !== index}
-        >
-          <img
-            src={slide.img}
-            alt={slide.title}
-            width={1920}
-            height={1280}
-            loading={i === 0 ? "eager" : "lazy"}
-            fetchPriority={i === 0 ? "high" : "auto"}
-            className={`absolute inset-0 h-full w-full object-cover will-change-transform ${i === index ? "hero-kenburns" : ""}`}
-          />
-        </div>
-      ))}
+      {/* Image area */}
+      <div className="absolute inset-0">
+        {/* Slides */}
+        {heroSlides.map((slide, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
+            aria-hidden={i !== index}
+          >
+            <img
+              src={slide.img}
+              alt={slide.title}
+              width={1920}
+              height={1280}
+              loading={i === 0 ? "eager" : "lazy"}
+              fetchPriority={i === 0 ? "high" : "auto"}
+              className={`absolute inset-0 h-full w-full object-cover will-change-transform ${i === index ? "hero-kenburns" : ""}`}
+            />
+          </div>
+        ))}
 
-      {/* Premium dark-blue gradient overlay */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-b from-[hsl(215_60%_10%/0.75)] via-[hsl(215_55%_14%/0.55)] to-[hsl(215_65%_8%/0.85)]" />
-      <div className="absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_center,transparent_35%,hsl(215_60%_8%/0.55)_100%)]" />
+        {/* Premium dark-blue gradient overlay */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-[hsl(215_60%_10%/0.75)] via-[hsl(215_55%_14%/0.55)] to-[hsl(215_65%_8%/0.85)]" />
+        <div className="absolute inset-0 z-20 bg-[radial-gradient(ellipse_at_center,transparent_35%,hsl(215_60%_8%/0.55)_100%)]" />
+
+        {/* Prev / Next buttons */}
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous slide"
+          className="grid place-items-center absolute left-3 md:left-6 top-1/2 -translate-y-1/2 z-40 size-10 md:size-14 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/25 text-white hover:bg-white/25 hover:scale-105 transition-all"
+        >
+          <ChevronLeft className="size-5 md:size-6" />
+        </button>
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next slide"
+          className="grid place-items-center absolute right-3 md:right-6 top-1/2 -translate-y-1/2 z-40 size-10 md:size-14 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/25 text-white hover:bg-white/25 hover:scale-105 transition-all"
+        >
+          <ChevronRight className="size-5 md:size-6" />
+        </button>
+      </div>
 
       {/* Content */}
       <div ref={contentRef} className="relative z-30 h-full flex flex-col items-center justify-center text-center px-6">
@@ -266,24 +287,6 @@ function HeroSlider() {
           </div>
         </div>
       </div>
-
-      {/* Prev / Next buttons */}
-      <button
-        type="button"
-        onClick={prev}
-        aria-label="Previous slide"
-        className="hidden md:grid place-items-center absolute left-6 top-1/2 -translate-y-1/2 z-40 size-14 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/25 text-white hover:bg-white/25 hover:scale-105 transition-all"
-      >
-        <ChevronLeft className="size-6" />
-      </button>
-      <button
-        type="button"
-        onClick={next}
-        aria-label="Next slide"
-        className="hidden md:grid place-items-center absolute right-6 top-1/2 -translate-y-1/2 z-40 size-14 rounded-full bg-white/10 backdrop-blur-md ring-1 ring-white/25 text-white hover:bg-white/25 hover:scale-105 transition-all"
-      >
-        <ChevronRight className="size-6" />
-      </button>
 
       {/* Pagination */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
