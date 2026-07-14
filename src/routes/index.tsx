@@ -12,6 +12,12 @@ import slideConsult from "@/assets/slide-consult.jpg";
 import slideAssessment from "@/assets/slide-assessment.jpg";
 import slideAba from "@/assets/slide-aba.jpg";
 import slideHappy from "@/assets/slide-happy.jpg";
+import slideOtMobile from "@/assets/slide-ot-mobile.jpg";
+import slideAutismMobile from "@/assets/slide-autism-mobile.jpg";
+import slideConsultMobile from "@/assets/slide-consult-mobile.jpg";
+import slideAssessmentMobile from "@/assets/slide-assessment-mobile.jpg";
+import slideAbaMobile from "@/assets/slide-aba-mobile.jpg";
+import slideHappyMobile from "@/assets/slide-happy-mobile.jpg";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import aboutImg from "@/assets/home-about.jpg";
 import ctaImg from "@/assets/home-cta.jpg";
@@ -83,6 +89,7 @@ const articles = [
 
 type Slide = {
   img: string;
+  imgMobile?: string;
   badge: string;
   title: string;
   highlight: string;
@@ -101,7 +108,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Explore Services", to: "/services" },
   },
   {
-    img: slideAssessment, badge: "Early Assessment",
+    img: slideAssessment, imgMobile: slideAssessmentMobile, badge: "Early Assessment",
     title: "Early Assessment",
     highlight: "Changes Lives",
     desc: "Gold-standard developmental evaluations catch delays early — giving your child the head start they deserve on their journey.",
@@ -109,7 +116,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Meet Specialists", to: "/specialists" },
   },
   {
-    img: slideAutism, badge: "Autism & ADHD Care",
+    img: slideAutism, imgMobile: slideAutismMobile, badge: "Autism & ADHD Care",
     title: "Professional Autism",
     highlight: "& ADHD Care",
     desc: "Integrated, family-centred therapy programmes for children on the spectrum and those with attention differences — with measurable outcomes.",
@@ -117,7 +124,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Contact Us", to: "/contact" },
   },
   {
-    img: slideOt, badge: "Occupational Therapy",
+    img: slideOt, imgMobile: slideOtMobile, badge: "Occupational Therapy",
     title: "Therapy That Builds",
     highlight: "Confidence",
     desc: "Play-based occupational and sensory therapy that helps children master fine motor skills, self-regulation and everyday independence.",
@@ -125,7 +132,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Learn More", to: "/services" },
   },
   {
-    img: slideConsult, badge: "Family-Centred Care",
+    img: slideConsult, imgMobile: slideConsultMobile, badge: "Family-Centred Care",
     title: "A Complete Child",
     highlight: "Development Center",
     desc: "Speech, OT, ABA, physio, psychology and pediatric medicine — every clinician your child needs under one trusted roof.",
@@ -133,7 +140,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Book Appointment", to: "/appointment" },
   },
   {
-    img: slideAba, badge: "ABA Therapy",
+    img: slideAba, imgMobile: slideAbaMobile, badge: "ABA Therapy",
     title: "Trusted By Thousands",
     highlight: "Of Families",
     desc: "17,000+ Bangladeshi families have trusted our clinical team with their child's development — measurable progress, one session at a time.",
@@ -141,7 +148,7 @@ const heroSlides: Slide[] = [
     cta2: { label: "Contact Us", to: "/contact" },
   },
   {
-    img: slideHappy, badge: "Every Child Matters",
+    img: slideHappy, imgMobile: slideHappyMobile, badge: "Every Child Matters",
     title: "Every Child Deserves",
     highlight: "A Better Future",
     desc: "From first words to full confidence — we walk this journey with your family, celebrating every milestone along the way.",
@@ -223,15 +230,18 @@ function HeroSlider() {
             className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${i === index ? "opacity-100 z-10" : "opacity-0 z-0"}`}
             aria-hidden={i !== index}
           >
-            <img
-              src={slide.img}
-              alt={slide.title}
-              width={1920}
-              height={1280}
-              loading={i === 0 ? "eager" : "lazy"}
-              fetchPriority={i === 0 ? "high" : "auto"}
-              className={`absolute inset-0 h-full w-full object-cover will-change-transform ${i === index ? "hero-kenburns" : ""}`}
-            />
+            <picture>
+              {slide.imgMobile && <source media="(max-width: 767px)" srcSet={slide.imgMobile} />}
+              <img
+                src={slide.img}
+                alt={slide.title}
+                width={1920}
+                height={1280}
+                loading={i === 0 ? "eager" : "lazy"}
+                fetchPriority={i === 0 ? "high" : "auto"}
+                className={`absolute inset-0 h-full w-full object-cover will-change-transform ${i === index ? "hero-kenburns" : ""}`}
+              />
+            </picture>
           </div>
         ))}
 
