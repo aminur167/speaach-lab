@@ -119,7 +119,7 @@ export function SiteHeader() {
       <header
         className={`transition-all duration-300 ${transparent ? "bg-transparent" : "bg-background/95 backdrop-blur-md shadow-[0_2px_20px_-8px_rgba(0,0,0,0.12)] border-b border-border"}`}
       >
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-2 sm:gap-6">
           {/* Logo */}
           <Link to="/" className="shrink-0 inline-flex items-center gap-3 leading-none group">
             <img
@@ -136,6 +136,16 @@ export function SiteHeader() {
               <span className="font-mono text-[9px] uppercase tracking-[0.22em] text-muted-foreground mt-0.5">
                 Perfect Therapeutic Medicine
               </span>
+            </span>
+          </Link>
+
+          {/* Mobile centered brand name */}
+          <Link to="/" className={`sm:hidden flex-1 min-w-0 flex flex-col items-center text-center leading-none ${transparent ? "text-primary-foreground" : "text-primary"}`}>
+            <span className="font-serif text-base font-bold tracking-tight whitespace-nowrap">
+              Speech Therapy<span className="text-accent"> Lab</span>
+            </span>
+            <span className="font-mono text-[8px] uppercase tracking-[0.18em] text-muted-foreground mt-0.5 whitespace-nowrap">
+              Perfect Therapeutic Medicine
             </span>
           </Link>
 
