@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import logoAsset from "@/assets/therapy-lab-logo.png.asset.json";
+import logoUrl from "@/assets/therapy-lab-logo.png";
 import { contact, telHref, whatsappHref } from "@/config/contact";
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
@@ -142,7 +142,7 @@ export function SiteFooter() {
           <div data-footer-reveal className="lg:col-span-4">
             <Link to="/" className="inline-flex items-center gap-3 leading-none">
               <img
-                src={logoAsset.url}
+                src={logoUrl}
                 alt="Therapy Lab logo"
                 width={56}
                 height={56}

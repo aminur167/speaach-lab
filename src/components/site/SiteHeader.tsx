@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { branchesList } from "@/data/team";
-import logoAsset from "@/assets/therapy-lab-logo.png.asset.json";
+import logoUrl from "@/assets/therapy-lab-logo.png";
 import { contact, telHref, whatsappHref } from "@/config/contact";
 import {
   Phone, Mail, Clock, Facebook, Youtube, MessageCircle, Menu, X, ChevronDown,
@@ -123,7 +123,7 @@ export function SiteHeader() {
           {/* Logo */}
           <Link to="/" className="shrink-0 inline-flex items-center gap-3 leading-none group">
             <img
-              src={logoAsset.url}
+              src={logoUrl}
               alt="Speech Therapy Lab — Perfect Therapeutic Medicine"
               width={48}
               height={48}
